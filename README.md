@@ -16,4 +16,14 @@ https://en.wikipedia.org/wiki/Depth-first_search
 
 ![image](https://user-images.githubusercontent.com/97995173/213224977-f2f9e0a7-679d-41a7-9cb1-a5ce557f9c64.png)
  
-3) length = width = 100 (takes approximatly 10 mins to generate)
+3) length = width = 100 (takes approximatly 30 mins to generate)
+
+![image](https://user-images.githubusercontent.com/97995173/213235949-884ecbda-0049-4926-9480-1317ec68b932.png)
+
+# More into it
+in the back end of this code i also generated a 2D array conestracting the maze such that a block is:
+1) open from the top   -->		 0111
+2) open from the left		--> 1011
+3) open from the bottom 	--> 1101
+4) open from the right		--> 1110 
+To help me test the maze solver using recusion project 
