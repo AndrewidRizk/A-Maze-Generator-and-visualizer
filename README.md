@@ -28,6 +28,13 @@ in the back end of this code i also generated a 2D array conestracting the maze 
 4) open from the right		--> 1110 
 To help me test the maze solver using recusion project: https://github.com/AndrewidRizk/Maze-Solver
 
-![image](https://user-images.githubusercontent.com/97995173/213239530-d38c0478-8437-40b5-ae90-583ae839ebca.png) ![image](https://user-images.githubusercontent.com/97995173/213239822-c8aba7e3-0785-4d73-aa85-3ff37d2e8088.png)
+![image](https://user-images.githubusercontent.com/97995173/213239530-d38c0478-8437-40b5-ae90-583ae839ebca.png)
+corresponds to 
+![image](https://user-images.githubusercontent.com/97995173/213239822-c8aba7e3-0785-4d73-aa85-3ff37d2e8088.png)
 
+#Video
+
+
+
+https://user-images.githubusercontent.com/97995173/213240815-2f41023a-5f34-487e-97c0-56becfa3544c.mp4
 
