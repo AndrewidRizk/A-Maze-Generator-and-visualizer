@@ -45,6 +45,10 @@ class Maze {
         }
     }
     this.Maze_creator = arr;
+
+   // this.PathToExit = this.MazeSolver();
+
+
   }
 
  
@@ -128,7 +132,9 @@ class Maze {
     window.requestAnimationFrame(() => {
       this.draw();
     });
-
+    //     setTimeout(() => {rd
+    //       this.draw();
+    //     }, 10);
   }
 }
 
@@ -355,7 +361,8 @@ class Cell {
   show(size, rows, columns) {
     let x = (this.colNum * size) / columns;
     let y = (this.rowNum * size) / rows;
-
+    // console.log(`x =${x}`);
+    // console.log(`y =${y}`);
     ctx.strokeStyle = "#blue";
     ctx.fillStyle = "green"; 
     ctx.lineWidth = 2;
