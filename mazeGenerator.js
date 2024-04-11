@@ -407,7 +407,7 @@ function SolveMazeApi(){
   console.log("Solve Maze API button clicked");
   const mazeData = newMaze.getMaze_creator();
 
-  fetch('/solve', {
+  fetch('http://localhost:8080/solve', {
       method: 'POST',
       headers: {
           'Content-Type': 'application/json'
