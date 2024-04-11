@@ -51,15 +51,10 @@ class Maze {
 
   }
 
+
      // Ensure resetMaze correctly resets canvas size and reinitializes the maze
-  resetMaze(size) {
-      console.log("resetMaze called with value")
-      console.log(size)
-      this.canvas.width = size;
-      this.canvas.height = size;
-      console.log(this.canvas.width)
-      this.setup();
-      this.draw();
+  getMaze_creator() {
+    return this.Maze_creator
   }
 
 
@@ -160,7 +155,7 @@ class Cell {
     this.rowNum = rowNum;
     this.colNum = colNum;
     this.visited = false;
-    this. maze_creator= maze_creator;
+    this.maze_creator= maze_creator;
 
     this.walls = {
       topWall: true,
@@ -403,15 +398,21 @@ function generateMaze() {
       console.error("Invalid maze size");
       return;
   }
-  let newMaze = new Maze(500, mazeSize, mazeSize);
+  newMaze = new Maze(500, mazeSize, mazeSize);
   newMaze.setup();
   newMaze.draw();
-  newMaze.show()
+  console.log(newMaze.getMaze_creator());
 }
 
+function SolveMazeApi(){
+  console.log("Solve Maze Api button clicked"); // Add this line to test
+}
 // Listen for click event on the "Generate Maze" button
 let generateButton = document.getElementById("generateButton");
 generateButton.addEventListener("click", generateMaze);
+
+let SolveMaze = document.getElementById("SolveMaze");
+SolveMaze.addEventListener("click", SolveMazeApi);
 
 // Setup and draw the initial maze
 newMaze.setup();
