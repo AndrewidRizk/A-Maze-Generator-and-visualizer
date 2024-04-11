@@ -23,6 +23,7 @@ class Maze {
      */
   constructor(size, rows, columns) 
    {
+    this.canvas = document.getElementById("mazeCanvas"); // Adjusted to select by ID
     this.size = size;  
     this.columns = columns;
     this.rows = rows;
@@ -46,12 +47,20 @@ class Maze {
     }
     this.Maze_creator = arr;
 
-   // this.PathToExit = this.MazeSolver();
 
 
   }
 
- 
+     // Ensure resetMaze correctly resets canvas size and reinitializes the maze
+  resetMaze(size) {
+      console.log("resetMaze called with value")
+      console.log(size)
+      this.canvas.width = size;
+      this.canvas.height = size;
+      console.log(this.canvas.width)
+      this.setup();
+      this.draw();
+  }
 
 
   
@@ -132,9 +141,7 @@ class Maze {
     window.requestAnimationFrame(() => {
       this.draw();
     });
-    //     setTimeout(() => {rd
-    //       this.draw();
-    //     }, 10);
+
   }
 }
 
@@ -361,8 +368,6 @@ class Cell {
   show(size, rows, columns) {
     let x = (this.colNum * size) / columns;
     let y = (this.rowNum * size) / rows;
-    // console.log(`x =${x}`);
-    // console.log(`y =${y}`);
     ctx.strokeStyle = "#blue";
     ctx.fillStyle = "green"; 
     ctx.lineWidth = 2;
@@ -381,8 +386,33 @@ class Cell {
       ctx.fillRect(x + 1, y + 1, size / columns - 2, size / rows - 2);
     }
   }
+
+
 }
 
+// Create a new instance of Maze with a default size of 500
 let newMaze = new Maze(500, 10, 10);
+
+function generateMaze() {
+  console.log("Generate Maze button clicked"); // Add this line to test
+  let mazeSizeInput = document.getElementById("mazeSize");
+  let mazeSize = parseInt(mazeSizeInput.value, 10);
+
+  // Check for a valid maze size
+  if (isNaN(mazeSize)) {
+      console.error("Invalid maze size");
+      return;
+  }
+  let newMaze = new Maze(500, mazeSize, mazeSize);
+  newMaze.setup();
+  newMaze.draw();
+  newMaze.show()
+}
+
+// Listen for click event on the "Generate Maze" button
+let generateButton = document.getElementById("generateButton");
+generateButton.addEventListener("click", generateMaze);
+
+// Setup and draw the initial maze
 newMaze.setup();
 newMaze.draw();
