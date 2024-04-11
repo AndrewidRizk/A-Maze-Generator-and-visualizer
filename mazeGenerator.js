@@ -401,11 +401,26 @@ function generateMaze() {
   newMaze = new Maze(500, mazeSize, mazeSize);
   newMaze.setup();
   newMaze.draw();
-  console.log(newMaze.getMaze_creator());
 }
 
 function SolveMazeApi(){
-  console.log("Solve Maze Api button clicked"); // Add this line to test
+  console.log("Solve Maze API button clicked");
+  const mazeData = newMaze.getMaze_creator();
+
+  fetch('/solve', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(mazeData)
+  })
+  .then(response => response.text())
+  .then(result => {
+      console.log('Solution:', result);
+  })
+  .catch(error => {
+      console.error('Error solving maze:', error);
+  });
 }
 // Listen for click event on the "Generate Maze" button
 let generateButton = document.getElementById("generateButton");
