@@ -46,23 +46,27 @@ class Maze {
     }
     this.Maze_creator = arr;
   }
-
   changePathColor(path) {
     const ctx = this.canvas.getContext('2d');
     const cellSize = this.size / this.columns; // Assuming the maze is square
-
     ctx.fillStyle = 'blue'; // Set the fill color for the path
 
-    // Loop over the path to color each cell
-    path.forEach(cell => {
-        const x = cell[1] * cellSize; // cell[1] is the column index
-        const y = cell[0] * cellSize; // cell[0] is the row index
-
-        // Fill the cell with red, leaving some padding to avoid drawing over walls
-        // Adjust padding as needed to fit your maze design
-        ctx.fillRect(x+10, y+10, cellSize - 20, cellSize - 20);
+    // Loop over the path to color each cell with a delay
+    path.forEach((cell, index) => {
+        setTimeout(() => {
+            let x = cell[1] * cellSize; // cell[1] is the column index
+            let y = cell[0] * cellSize; // cell[0] is the row index
+            if (mazeSize > 65) {
+                ctx.fillRect(x + 15, y + 15, cellSize - 30, cellSize - 30);
+            } else {
+                ctx.fillRect(x + 10, y + 10, cellSize - 20, cellSize - 20);
+            }
+            // Fill the cell with blue, leaving some padding to avoid drawing over walls
+            // Adjust padding as needed to fit your maze design
+        }, 100 * index); // Delay increases with each cell to create the animation effect
     });
 }
+
 
   
 
@@ -429,7 +433,7 @@ function generateMaze() {
         newMaze = new Maze(800, mazeSize, mazeSize);
     } else if (mazeSize > 45) {
         newMaze = new Maze(700, mazeSize, mazeSize);
-    } else if (mazeSize > 35) {
+    } else if (mazeSize > 20) {
         newMaze = new Maze(600, mazeSize, mazeSize);
     } else {
         newMaze = new Maze(500, mazeSize, mazeSize);
@@ -468,7 +472,7 @@ function SolveMazeApi(){
         console.log('Solution:', result);
         const coordinatesArray = parseCoordinates(result);
         console.log(coordinatesArray);
-        newMaze.changePathColor(coordinatesArray )
+        newMaze.changePathColor(coordinatesArray)
     })
       .catch(error => {
           console.error('Error solving maze:', error);
