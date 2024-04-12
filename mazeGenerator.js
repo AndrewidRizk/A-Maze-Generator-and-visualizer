@@ -21,8 +21,7 @@ class Maze {
      * @param {Columns of the Maze} columns 
      * using stack to push and pop the visited cells 
      */
-  constructor(size, rows, columns) 
-   {
+  constructor(size, rows, columns) {
     this.canvas = document.getElementById("mazeCanvas"); // Adjusted to select by ID
     this.size = size;  
     this.columns = columns;
@@ -46,16 +45,32 @@ class Maze {
         }
     }
     this.Maze_creator = arr;
-
-
-
   }
 
+  changePathColor(path) {
+    const ctx = this.canvas.getContext('2d');
+    const cellSize = this.size / this.columns; // Assuming the maze is square
+
+    ctx.fillStyle = 'blue'; // Set the fill color for the path
+
+    // Loop over the path to color each cell
+    path.forEach(cell => {
+        const x = cell[1] * cellSize; // cell[1] is the column index
+        const y = cell[0] * cellSize; // cell[0] is the row index
+
+        // Fill the cell with red, leaving some padding to avoid drawing over walls
+        // Adjust padding as needed to fit your maze design
+        ctx.fillRect(x+10, y+10, cellSize - 20, cellSize - 20);
+    });
+}
+
+  
 
      // Ensure resetMaze correctly resets canvas size and reinitializes the maze
   getMaze_creator() {
     return this.Maze_creator
   }
+
 
 
   
@@ -138,6 +153,7 @@ class Maze {
     });
 
   }
+  
 }
 
 class Cell {
@@ -171,6 +187,13 @@ class Cell {
 
     this.parentGrid = parentGrid;
     this.parentSize = parentSize;
+  }
+
+  highlight1(ctx, color) {
+    const x = this.colNum * this.cellSize;
+    const y = this.rowNum * this.cellSize;
+    ctx.fillStyle = color;
+    ctx.fillRect(x, y, this.cellSize, this.cellSize);
   }
 
   /**
@@ -354,6 +377,7 @@ class Cell {
     }
   }
 
+  
   /**
    * This method draws each of the the cells on the maze canvas
    * @param {Size pf the maze} size 
@@ -381,6 +405,7 @@ class Cell {
       ctx.fillRect(x + 1, y + 1, size / columns - 2, size / rows - 2);
     }
   }
+  
 
 
 }
@@ -389,53 +414,85 @@ class Cell {
 let newMaze = new Maze(500, 10, 10);
 
 function generateMaze() {
-  console.log("Generate Maze button clicked"); // Add this line to test
-  let mazeSizeInput = document.getElementById("mazeSize");
-  let mazeSize = parseInt(mazeSizeInput.value, 10);
+      console.log("Generate Maze button clicked"); // Add this line to test
+      let mazeSizeInput = document.getElementById("mazeSize");
+      let mazeSize = parseInt(mazeSizeInput.value, 10);
 
-  // Check for a valid maze size
-  if (isNaN(mazeSize)) {
-      console.error("Invalid maze size");
-      return;
-  }
-  newMaze = new Maze(500, mazeSize, mazeSize);
-  newMaze.setup();
-  newMaze.draw();
+      // Check for a valid maze size
+      if (isNaN(mazeSize)) {
+          console.error("Invalid maze size");
+          return;
+      }
+      if (mazeSize > 85) {
+        newMaze = new Maze(900, mazeSize, mazeSize);
+    } else if (mazeSize > 55) {
+        newMaze = new Maze(800, mazeSize, mazeSize);
+    } else if (mazeSize > 45) {
+        newMaze = new Maze(700, mazeSize, mazeSize);
+    } else if (mazeSize > 35) {
+        newMaze = new Maze(600, mazeSize, mazeSize);
+    } else {
+        newMaze = new Maze(500, mazeSize, mazeSize);
+    }
+      newMaze.setup();
+      newMaze.draw();
 }
 
 function SolveMazeApi(){
-  console.log("Solve Maze API button clicked");
-  const mazeData = newMaze.getMaze_creator();
-  let firstElement = mazeData[0][0]; // Get the first element of the first row
-  // Replace the first character with "0"
-  firstElement = '0' + firstElement.substring(1);
-  // Assign the modified string back to the first element of the first row
-  mazeData[0][0] = firstElement;
-  let lastRowIndex = mazeData.length - 1; // Index of the last row
-  let lastColIndex = mazeData[lastRowIndex].length - 1; // Index of the last element in the last row
-  let lastElement = mazeData[lastRowIndex][lastColIndex]; // Get the last element of the last row
+      console.log("Solve Maze API button clicked");
+      const mazeData = newMaze.getMaze_creator();
+      let firstElement = mazeData[0][0]; // Get the first element of the first row
+      // Replace the first character with "0"
+      firstElement = '0' + firstElement.substring(1);
+      // Assign the modified string back to the first element of the first row
+      mazeData[0][0] = firstElement;
+      let lastRowIndex = mazeData.length - 1; // Index of the last row
+      let lastColIndex = mazeData[lastRowIndex].length - 1; // Index of the last element in the last row
+      let lastElement = mazeData[lastRowIndex][lastColIndex]; // Get the last element of the last row
 
-  // Replace the last character with "0"
-  lastElement = lastElement.substring(0, lastElement.length - 1) + '0';
-  
-  // Assign the modified string back to the last element of the last row
-  mazeData[lastRowIndex][lastColIndex] = lastElement;
+      // Replace the last character with "0"
+      lastElement = lastElement.substring(0, lastElement.length - 1) + '0';
+      
+      // Assign the modified string back to the last element of the last row
+      mazeData[lastRowIndex][lastColIndex] = lastElement;
 
-  fetch('http://localhost:8080/solve', {
-      method: 'POST',
-      headers: {
-          'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(mazeData)
-  })
-  .then(response => response.text())
-  .then(result => {
-      console.log('Solution:', result);
-  })
-  .catch(error => {
-      console.error('Error solving maze:', error);
-  });
+      fetch('http://localhost:8080/solve', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(mazeData)
+      })
+      .then(response => response.text())
+      .then(result => {
+        console.log('Solution:', result);
+        const coordinatesArray = parseCoordinates(result);
+        console.log(coordinatesArray);
+        newMaze.changePathColor(coordinatesArray )
+    })
+      .catch(error => {
+          console.error('Error solving maze:', error);
+      });
+
+
 }
+
+function parseCoordinates(inputString) {
+      // Use a regular expression to match all coordinate pairs in the format (x,y)
+      const regex = /\((\d+),(\d+)\)/g;
+      let match;
+      const result = [];
+
+      // Iterate over all matches
+      while ((match = regex.exec(inputString)) !== null) {
+          // Convert string numbers to integers and push as a tuple to result
+          result.push([parseInt(match[1], 10), parseInt(match[2], 10)]);
+      }
+
+      return result;
+}
+
+
 // Listen for click event on the "Generate Maze" button
 let generateButton = document.getElementById("generateButton");
 generateButton.addEventListener("click", generateMaze);
