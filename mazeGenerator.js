@@ -49,21 +49,41 @@ class Maze {
   changePathColor(path) {
     const ctx = this.canvas.getContext('2d');
     const cellSize = this.size / this.columns; // Assuming the maze is square
-    ctx.fillStyle = 'blue'; // Set the fill color for the path
+    
 
     // Loop over the path to color each cell with a delay
     path.forEach((cell, index) => {
         setTimeout(() => {
+            ctx.fillStyle = 'blue'; // Set the fill color for the path
             let x = cell[1] * cellSize; // cell[1] is the column index
             let y = cell[0] * cellSize; // cell[0] is the row index
-            if (mazeSize > 65) {
-                ctx.fillRect(x + 15, y + 15, cellSize - 30, cellSize - 30);
+            if (this.size > 40) {
+              ctx.fillRect(x + 3, y + 3, cellSize - 6, cellSize - 6);
+          }
+           else if (this.size > 20) {
+                ctx.fillRect(x + 5, y + 5, cellSize - 10, cellSize - 10);
             } else {
                 ctx.fillRect(x + 10, y + 10, cellSize - 20, cellSize - 20);
             }
+            if(index > 1)
+            {
+              ctx.fillStyle = '#006400'; // Dark green
+             // Set the fill color for the path
+              index = index - 1;
+              let x = path[index][1] * cellSize; // cell[1] is the column index
+              let y = path[index][0] * cellSize; // cell[0] is the row index
+              if (this.size > 40) {
+                ctx.fillRect(x + 3, y + 3, cellSize - 6, cellSize - 6);
+              }
+              else if (this.size > 20) {
+                ctx.fillRect(x + 5, y + 5, cellSize - 10, cellSize - 10);
+              } else {
+                  ctx.fillRect(x + 10, y + 10, cellSize - 20, cellSize - 20);
+              }
+            }
             // Fill the cell with blue, leaving some padding to avoid drawing over walls
             // Adjust padding as needed to fit your maze design
-        }, 100 * index); // Delay increases with each cell to create the animation effect
+        }, 80 * index); // Delay increases with each cell to create the animation effect
     });
 }
 
