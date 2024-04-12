@@ -406,11 +406,11 @@ function generateMaze() {
 function SolveMazeApi(){
   console.log("Solve Maze API button clicked");
   const mazeData = newMaze.getMaze_creator();
-  let firstElement = mazeData[0][0]; // Get the first element of the first row
+  //let firstElement = mazeData[0][0]; // Get the first element of the first row
   // Replace the first character with "0"
-  firstElement = '0' + firstElement.substring(1);
+  //firstElement = '0' + firstElement.substring(1);
   // Assign the modified string back to the first element of the first row
-  mazeData[0][0] = firstElement;
+  //mazeData[0][0] = firstElement;
   let lastRowIndex = mazeData.length - 1; // Index of the last row
   let lastColIndex = mazeData[lastRowIndex].length - 1; // Index of the last element in the last row
   let lastElement = mazeData[lastRowIndex][lastColIndex]; // Get the last element of the last row
