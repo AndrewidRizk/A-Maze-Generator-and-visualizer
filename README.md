@@ -25,7 +25,7 @@ https://en.wikipedia.org/wiki/Depth-first_search
 
 ![image](https://user-images.githubusercontent.com/97995173/213235949-884ecbda-0049-4926-9480-1317ec68b932.png)
 
-# More into it
+# Sending to the API
 in the back end of this code i also generated a 2D array conestracting the maze such that a block is:
 1) open from the top   -->		 0111
 2) open from the left		--> 1011
@@ -33,20 +33,33 @@ in the back end of this code i also generated a 2D array conestracting the maze 
 4) open from the right		--> 1110 
 
 
-To help me test the maze solver using recusion project: https://github.com/AndrewidRizk/Maze-Solver
-
 ![image](https://user-images.githubusercontent.com/97995173/213239530-d38c0478-8437-40b5-ae90-583ae839ebca.png)
 
 corresponds to 
 
 ![image](https://user-images.githubusercontent.com/97995173/213239822-c8aba7e3-0785-4d73-aa85-3ff37d2e8088.png)
 
-# Video
+Then fetch the soution of the maze from my JAVA-API as following
+```
+fetch('https://sudo-delete-web-service-maze-solver-api.onrender.com/solve', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(mazeData)
+      })
+      .then(response => response.text())
+      .then(result => {
+        console.log('Solution:', result);
+        const coordinatesArray = parseCoordinates(result);
+        console.log(coordinatesArray);
+        newMaze.changePathColor(coordinatesArray)
+    })
+      .catch(error => {
+          console.error('Error solving maze:', error);
+      });
+```
 
-
-
-
-https://user-images.githubusercontent.com/97995173/213241792-c0a7b940-3b78-4782-bfd4-693f49d00d8c.mp4
 
 
 
