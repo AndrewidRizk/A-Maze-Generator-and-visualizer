@@ -480,7 +480,7 @@ function SolveMazeApi(){
       // Assign the modified string back to the last element of the last row
       mazeData[lastRowIndex][lastColIndex] = lastElement;
 
-      fetch('http://localhost:8080/solve', {
+      fetch('https://sudo-delete-web-service-maze-solver-api.onrender.com/solve', {
           method: 'POST',
           headers: {
               'Content-Type': 'application/json'
