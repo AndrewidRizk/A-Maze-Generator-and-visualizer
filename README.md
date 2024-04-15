@@ -22,8 +22,10 @@ https://en.wikipedia.org/wiki/Depth-first_search
 ![image](https://user-images.githubusercontent.com/97995173/213224977-f2f9e0a7-679d-41a7-9cb1-a5ce557f9c64.png)
  
 3) length = width = 100 (takes approximatly 30 mins to generate)
+   
 
 ![image](https://user-images.githubusercontent.com/97995173/213235949-884ecbda-0049-4926-9480-1317ec68b932.png)
+
 
 # Sending to the API
 in the back end of this code i also generated a 2D array conestracting the maze such that a block is:
@@ -35,9 +37,11 @@ in the back end of this code i also generated a 2D array conestracting the maze 
 
 ![image](https://user-images.githubusercontent.com/97995173/213239530-d38c0478-8437-40b5-ae90-583ae839ebca.png)
 
+
 corresponds to 
 
 ![image](https://user-images.githubusercontent.com/97995173/213239822-c8aba7e3-0785-4d73-aa85-3ff37d2e8088.png)
+
 
 Then fetch the soution of the maze from my JAVA-API as following
 ```
