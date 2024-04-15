@@ -83,7 +83,7 @@ class Maze {
             }
             // Fill the cell with blue, leaving some padding to avoid drawing over walls
             // Adjust padding as needed to fit your maze design
-        }, 80 * index); // Delay increases with each cell to create the animation effect
+        }, 60 * index); // Delay increases with each cell to create the animation effect
     });
 }
 
