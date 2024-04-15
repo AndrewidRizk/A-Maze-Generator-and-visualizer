@@ -13,21 +13,6 @@
 # Source read more 📖
 https://en.wikipedia.org/wiki/Depth-first_search
 
-# Output
-1) length = width = 10
-
-![image](https://user-images.githubusercontent.com/97995173/213225561-efda1332-7a8d-47e3-bc7b-5d2f31133259.png)
-
-2) length = width = 40 
-
-![image](https://user-images.githubusercontent.com/97995173/213224977-f2f9e0a7-679d-41a7-9cb1-a5ce557f9c64.png)
- 
-3) length = width = 100 (takes approximatly 30 mins to generate)
-   
-
-![image](https://user-images.githubusercontent.com/97995173/213235949-884ecbda-0049-4926-9480-1317ec68b932.png)
-
-
 # Sending to the API
 in the back end of this code i also generated a 2D array conestracting the maze such that a block is:
 1) open from the top   -->		 0111
