@@ -30,25 +30,10 @@ in the back end of this code i also generated a 2D array conestracting the maze 
 
 
 - Then fetch the soution of the maze from my JAVA-API as following
-```
-fetch('https://sudo-delete-web-service-maze-solver-api.onrender.com/solve', {
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(mazeData)
-      })
-      .then(response => response.text())
-      .then(result => {
-        console.log('Solution:', result);
-        const coordinatesArray = parseCoordinates(result);
-        console.log(coordinatesArray);
-        newMaze.changePathColor(coordinatesArray)
-    })
-      .catch(error => {
-          console.error('Error solving maze:', error);
-      });
-```
+
+
+![image](https://github.com/AndrewidRizk/A-Maze-Generator-and-visualizer/assets/97995173/335bd989-1e3f-464a-a8c6-b395c42f26f8)
+
 
 - Then after receiving the answer. I visualize it to look like that
 
