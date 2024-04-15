@@ -24,12 +24,12 @@ in the back end of this code i also generated a 2D array conestracting the maze 
 ![image](https://user-images.githubusercontent.com/97995173/213239530-d38c0478-8437-40b5-ae90-583ae839ebca.png)
 
 
-corresponds to 
+- corresponds to 
 
 ![image](https://user-images.githubusercontent.com/97995173/213239822-c8aba7e3-0785-4d73-aa85-3ff37d2e8088.png)
 
 
-Then fetch the soution of the maze from my JAVA-API as following
+- Then fetch the soution of the maze from my JAVA-API as following
 ```
 fetch('https://sudo-delete-web-service-maze-solver-api.onrender.com/solve', {
           method: 'POST',
