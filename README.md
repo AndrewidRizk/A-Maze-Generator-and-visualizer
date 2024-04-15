@@ -52,7 +52,8 @@ fetch('https://sudo-delete-web-service-maze-solver-api.onrender.com/solve', {
 
 - Then after receiving the answer. I visualize it to look like that.
 
-  ![image](https://github.com/AndrewidRizk/A-Maze-Generator-and-visualizer/assets/97995173/5db098ac-fee5-41da-b40b-7e2a2ba425b7)
+
+![image](https://github.com/AndrewidRizk/A-Maze-Generator-and-visualizer/assets/97995173/5db098ac-fee5-41da-b40b-7e2a2ba425b7)
 
 
 
