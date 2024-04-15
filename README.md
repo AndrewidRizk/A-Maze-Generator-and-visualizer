@@ -1,5 +1,7 @@
 # A-Maze-Generator-and-visualizer
-A maze generator algorism using back tracking, Depth-first search and visualized on an HTML page.
+A maze generator algorism using back tracking, Depth-first search using JS and visualized by HTML and CSS.
+
+Legacy code from my second year of university to solve mazes. I created a Java API listening on https://sudo-delete-web-service-maze-solver-api.onrender.com.
 
 JAVA-Server API: [https://a-maze-generator-and-visualizer.vercel.app/](https://github.com/AndrewidRizk/Maze-Solver)
 # Details 
