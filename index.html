@@ -24,6 +24,7 @@
         }
         
         .inputs {
+            font-size: 2.5lvh;
             display: flex;
             flex-direction: row;
             justify-content: center;
@@ -32,6 +33,7 @@
             margin-bottom: 10px; /* Spacing below the input group */
         }
         button {
+            font-size: 1.5lvh;
             padding: 5px 10px; /* Padding inside the buttons */
             background-color: #906387; /* Matching one of your preferred colors */
             border: none;
@@ -56,12 +58,12 @@
 
     </style>
 </head>
-<body>
-    <h1>Welcome to My Website</h1>
+<body style="transform: scale(0.8); transform-origin: top left;">
+    <h1>Welcome to Maze Generator and solver</h1>
     <canvas id="mazeCanvas" class="maze"></canvas>
     <div class="inputs">
-        <label for="mazeSize">Enter maze size:</label>
-        <input type="number" id="mazeSize" min="5" max="50" value="10">
+        <label for="mazeSize" >Enter maze size:</label>
+        <input style="width: 100px;" type="number" id="mazeSize" min="5" max="50" value="10">
         <button id="generateButton">Generate Maze</button><button id="SolveMaze">Solve Maze</button>
     </div>
     
