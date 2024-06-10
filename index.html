@@ -17,6 +17,9 @@
             overflow-x: hidden;
 
         }
+        h1{
+            font-size: 40px;
+        }
         canvas {
             max-width: 100%; /* Limits the canvas width to not exceed the screen width */
             border: 1px solid white; /* Adds visibility with a white border */
@@ -24,7 +27,8 @@
         }
         
         .inputs {
-            font-size: 2.5lvh;
+            font-size: 20px;
+            
             display: flex;
             flex-direction: row;
             justify-content: center;
@@ -33,7 +37,7 @@
             margin-bottom: 10px; /* Spacing below the input group */
         }
         button {
-            font-size: 2lvh;
+            font-size: 15px;
             
             padding: 5px 10px; /* Padding inside the buttons */
             background-color: #906387; /* Matching one of your preferred colors */
@@ -87,19 +91,20 @@
 
     </style>
 </head>
-<body style="transform: scale(0.8); transform-origin: top left;">
-    <h1>Welcome to Maze Generator and solver</h1>
+<body style="transform: scale(0.8); ">
+    <h1>Maze Generator and solver</h1>
     <canvas id="mazeCanvas" class="maze"></canvas>
     <div class="inputs">
         <label for="mazeSize" >Enter maze size:</label>
-        <input style="width: 100px;" type="number" id="mazeSize" min="5" max="50" value="10">
-        <button id="generateButton">Generate Maze</button><button id="SolveMaze">Solve Maze</button>
+        <input style="font: 20px sans-serif;" type="number" id="mazeSize" min="5" max="50" value="10">
+        <button id="generateButton">Generate Maze</button>
+        <button id="SolveMaze">Solve Maze</button>
     </div>
     
     <script src="mazeGenerator.js"></script>
     <div id="popup" class="popup">
         <div class="popup-content">
-            <p>Waiting for API's response.<br>Allow 3 minutes for Render free plan run time.</p>
+            <p>Waiting for API's response.<br>Allow 3 minutes for Render free plan run time. <br>This wait time is required when there was no calls for the back end for over 20 minutes.</p>
         </div>
     </div>
 </body>
